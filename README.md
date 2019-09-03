@@ -12,7 +12,7 @@ The code will be released soon.
 ## Architecture
 
 <p align="center">
-<img src="images/RFN.png" width="800px"/>
+<img src="images/RFN.png" width="900px"/>
 </p>
 
 
@@ -24,19 +24,19 @@ Our SRRFN is trained on RGB, but as in previous work, we only reported PSNR/SSIM
 ### BI model
 
 <p align="center">
-<img src="images/BI_1" width="800px"/>
+<img src="images/BI_1.png" width="900px"/>
 </p>
 
 
 <p align="center">
-<img src="images/BI_2" width="800px"/>
+<img src="images/BI_2.png" width="900px"/>
 </p>
 
 
 ### BD and DN model
 
 <p align="center">
-<img src="images/BD_DN" width="800px"/>
+<img src="images/BD_DN" width="900px"/>
 </p>
 
 
