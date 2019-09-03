@@ -36,7 +36,7 @@ Our SRRFN is trained on RGB, but as in previous work, we only reported PSNR/SSIM
 ### BD and DN model
 
 <p align="center">
-<img src="images/BD_DN" width="900px"/>
+<img src="images/BD_DN.png" width="900px"/>
 </p>
 
 
