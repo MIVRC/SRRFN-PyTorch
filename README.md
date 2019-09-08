@@ -1,18 +1,17 @@
 # SRRFN-PyTorch
 This repository is a PyTorch version of the paper "Lightweight and Accurate Recursive Fractal Network for Image Super-Resolution" (ICCVW 2019, Oral).
 
-### The code will be released soon (codes are being sorted out).
-
 ### Paper can be download from <a href="https://junchenglee.com/paper/ICCVW_2019.pdf">SRRFN</a> 
 
-All original test datasets (HR images) can be downloaded from <a href="https://www.jianguoyun.com/p/DaSU0L4Q19ySBxi_qJAB">here</a>
+### All reconstructed images can be downloaded from  <a href="https://www.jianguoyun.com/p/DYQ40G8Q19ySBxjyzNUB">ICCVW2019_SRRFN_SR_image</a> （Including SRRFN and SRRFN+）.
 
+All original test datasets (HR images) can be downloaded from <a href="https://www.jianguoyun.com/p/DaSU0L4Q19ySBxi_qJAB">here</a>
 
 All test datasets (BI, Preprocessed LR images) can be downloaded from <a href="https://www.jianguoyun.com/p/DcrVSz0Q19ySBxiTs4oB">here</a>.
 
 All test datasets (BD, DN, Preprocessed LR images) can be downloaded from <a href="https://www.jianguoyun.com/p/DTNrOowQ19ySBxicie4B">here</a>.
 
-### All reconstructed images can be downloaded from  <a href="https://www.jianguoyun.com/p/DYQ40G8Q19ySBxjyzNUB">ICCVW2019_SRRFN_SR_image</a> （Including SRRFN and SRRFN+）.
+All model weight can be found in:  Test/model
 
 
 
@@ -58,7 +57,15 @@ It is worth noting that the purpose of this paper is to propose the idea of frac
 6. matplotlib
 7. tqdm
 
-For more informaiton, please refer to <a href="https://github.com/thstkdgus35/EDSR-PyTorch">EDSR</a> .
+This project is based on EDSR. Therefore, you can found more information in <a href="https://github.com/thstkdgus35/EDSR-PyTorch">EDSR</a> .
+
+
+#### We only provide the code for the case in the paper.
+#### In this case, we use the residual block as the component of FM.
+#### Therefore, this case can be see as a lightweight recursive RCAN.
+#### More robust and versatile code of Fractal Module (FM) will be released after our new research work is over.
+
+
 
 ## Document
 Train/             : all train files
@@ -76,15 +83,48 @@ Extract the download file and put it into the Train/dataset.
 
 ### Training
 
-The code will be released soon
+```
+# SRRFN x2  LR: 48 * 48  HR: 96 * 96
+python main.py --template SRRFN --save SRRFN_X2 --scale 2 --reset --save_results --patch_size 96 --ext sep_reset
+
+# SRRFN x3  LR: 48 * 48  HR: 144 * 144
+python main.py --template SRRFN --save SRRFN_X3 --scale 3 --reset --save_results --patch_size 144 --ext sep_reset
+
+# SRRFN x4  LR: 48 * 48  HR: 192 * 192
+python main.py --template SRRFN --save SRRFN_X4 --scale 4 --reset --save_results --patch_size 192 --ext sep_reset
+```
+More running instructions can be found in demo.sh.
 
 
 ## Testing
+Using pre-trained model for training, all test datasets must be pretreatment by  ''Test/Prepare_TestData_HR_LR.m" and all pre-trained model can be found in "Test/model/".
 
-The code will be released soon
+```
+# BI model
+#SRRFN x2
+python main.py --data_test MyImage --scale 2 --model SRRFN --degradation BI --pre_train ../model/SRRFN_x2_BI.pt --test_only --save_results --chop --save "SRRFN" --testpath ../LR/LRBI --testset Set5
+
+#SRRFN+ x2
+python main.py --data_test MyImage --scale 2 --model SRRFN --degradation BI --pre_train ../model/SRRFN_x2_BI.pt --test_only --save_results --chop --self_ensemble --save "SRRFN_plus" --testpath ../LR/LRBI --testset Set5
+
+
+# BD model
+#SRRFN_BD x3
+python main.py --data_test MyImage --scale 3 --model SRRFN --degradation BD --pre_train ../model/SRRFN_x3_BD.pt --test_only --save_results --chop --save "SRRF" --testpath ../LR/LRBD --testset Set5
+
+#SRRFN+_BD x3
+python main.py --data_test MyImage --scale 3 --model SRRFN --degradation BD --pre_train ../model/SRRFN_x3_BD.pt --test_only --save_results --chop --self_ensemble --save "SRRFN_plus" --testpath ../LR/LRBD --testset Set5
+
+
+# DN model
+#SRRFN_DN x3
+python main.py --data_test MyImage --scale 3 --model SRRFN --degradation DN --pre_train ../model/SRRFN_x3D_DN.pt --test_only --save_results --chop --save "SRRF" --testpath ../LR/LRDN --testset Set5
+
+#SRRFN+_DN x3
+python main.py --data_test MyImage --scale 3 --model SRRFN --degradation DN --pre_train ../model/SRRFN_x3D_DN.pt --test_only --save_results --chop --self_ensemble --save "SRRFN_plus" --testpath ../LR/LRDN --testset Set5
+```
 
 We also introduce self-ensemble strategy to improve our SRRFN and denote the self-ensembled version as SRRFN+.
-
 More running instructions can be found in demo.sh.
 
 
@@ -133,3 +173,6 @@ booktitle = {The IEEE International Conference on Computer Vision (ICCV) Worksho
 year = {2019}
 }
 ```
+
+Welcome to cite and compare our SRRFN, please contact me if you have any questions about the code.
+E-mail: cvjunchengli@gmail.com
