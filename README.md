@@ -1,7 +1,9 @@
 # SRRFN-PyTorch
 This repository is a PyTorch version of the paper "Lightweight and Accurate Recursive Fractal Network for Image Super-Resolution" (ICCVW 2019, Oral).
 
-### Paper can be download from <a href="https://junchenglee.com/paper/ICCVW_2019.pdf">SRRFN</a> 
+## The old paper download link was wrong~ sorry. We have corrected the link! 
+
+### Paper can be download from <a href="https://junchenglee.com/paper/ICCVW_LCI_2019.pdf">SRRFN</a> 
 
 ### All reconstructed images can be downloaded from  <a href="https://www.jianguoyun.com/p/DYQ40G8Q19ySBxjyzNUB">ICCVW2019_SRRFN_SR_image</a> （Including SRRFN and SRRFN+）.
 
