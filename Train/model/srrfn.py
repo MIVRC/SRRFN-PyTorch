@@ -60,7 +60,8 @@ class SRRFN(nn.Module):
         # RGB mean for DIV2K
         rgb_mean = (0.4488, 0.4371, 0.4040)
         rgb_std = (1.0, 1.0, 1.0)
-        self.sub_mean = common.MeanShift(args.rgb_range, rgb_mean, rgb_std)
+        self.sub_mean = common.MeanShift(args.rgb_range)
+        self.add_mean = common.MeanShift(args.rgb_range, sign=1)
         
         # define head module
         modules_head = [conv(args.n_colors, n_feats, kernel_size)]
@@ -76,8 +77,6 @@ class SRRFN(nn.Module):
         modules_tail = [
             common.Upsampler(conv, scale, n_feats, act=False),
             conv(n_feats, args.n_colors, kernel_size)]
-
-        self.add_mean = common.MeanShift(args.rgb_range, rgb_mean, rgb_std, 1)
 
         self.head = nn.Sequential(*modules_head)
         self.body = nn.Sequential(*modules_body)

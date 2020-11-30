@@ -172,8 +172,8 @@ Following previous works, our SRRFN is trained on RGB images, but the reported P
 author = {Li, Juncheng and Yuan, Yiting and Mei, Kangfu and Fang, Faming},
 title = {Lightweight and Accurate Recursive Fractal Network for Image Super-Resolution},
 booktitle = {The IEEE International Conference on Computer Vision (ICCV) Workshops},
-month = {Oct},
-year = {2019}
+year = {2019},
+pages={3814-3823}
 }
 ```
 
